@@ -2,12 +2,12 @@ from bs4 import BeautifulSoup
 import requests
 from csv import writer
 pag =1
-pages = 66
+pages = 66 #number ofpages teh website has
 with open('pararius.csv', 'w', encoding='utf8', newline='') as f:
   thewriter = writer(f)
   header = ['Title','Location','Price','Area']
   thewriter.writerow(header)
-  while pag<=pages :
+  while pag<=pages : #this loop manages each page URL
     url = "https://www.pararius.com/apartments/nederland/page-" + str(pag)
     page = requests.get(url)
     
@@ -24,4 +24,4 @@ with open('pararius.csv', 'w', encoding='utf8', newline='') as f:
      thewriter.writerow(info)
       
     pag += 1
-print("finished")
+print("finished") # this message means CSV is ready to use
